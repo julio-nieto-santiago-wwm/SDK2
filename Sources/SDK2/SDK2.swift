@@ -1,10 +1,10 @@
 import SwiftUI
 
-public class example {
-    
-}
-
 public struct SDK2 {
+    
+    class __ {}
+    static var SDK2Bundle: Bundle { return Bundle(for: SDK2.__.self) }
+    
     public private(set) var text = "Hello, World!"
 
     public init() {
@@ -16,10 +16,8 @@ public struct SDK2 {
     }
     
     public static func registerFonts() {
-        let frameworkBundle = Bundle(for: example.self)
-
        Montserrat.allCases.forEach {
-           registerFont(bundle: frameworkBundle, fontName: $0.rawValue, fontExtension: "ttf")
+           registerFont(bundle: SDK2Bundle, fontName: $0.rawValue, fontExtension: "ttf")
        }
     }
 
