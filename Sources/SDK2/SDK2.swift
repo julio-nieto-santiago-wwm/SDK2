@@ -3,12 +3,31 @@ import SwiftUI
 public struct SDK2 {
     
     class __ {}
+    
+    public class FontLoader {
+        static public func loadFont() {
+            if let fontUrl = Bundle(for: FontLoader.self).url(forResource: "Montserrat-Regular", withExtension: "ttf"),
+               let dataProvider = CGDataProvider(url: fontUrl as CFURL),
+               let newFont = CGFont(dataProvider) {
+                var error: Unmanaged<CFError>?
+                if !CTFontManagerRegisterGraphicsFont(newFont, &error)
+                    {
+                        print("Error loading Font!")
+                } else {
+                    print("Loaded font")
+                }
+            } else {
+                assertionFailure("Error loading font")
+            }
+        }
+    }
+    
     static var SDK2Bundle: Bundle { return Bundle(for: SDK2.__.self) }
     
     public private(set) var text = "Hello, World!"
 
     public init() {
-        SDK2.registerFonts()
+        FontLoader.loadFont()
     }
     
     public func showTimely() -> some View {
