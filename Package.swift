@@ -5,6 +5,9 @@ import PackageDescription
 
 let package = Package(
     name: "SDK2",
+    platforms: [
+            .iOS(.v13)
+        ],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
@@ -20,7 +23,9 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "SDK2",
-            dependencies: []),
+            dependencies: [],
+            resources: [.process("Fonts")]
+        ),
         .testTarget(
             name: "SDK2Tests",
             dependencies: ["SDK2"]),
