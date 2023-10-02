@@ -1,22 +1,28 @@
 import SwiftUI
 
+public class example {
+    
+}
+
 public struct SDK2 {
     public private(set) var text = "Hello, World!"
 
     public init() {
-//        SDK2.registerFonts()
+        SDK2.registerFonts()
     }
     
     public func showTimely() -> some View {
         Timely()
     }
     
-//    public static func registerFonts() {
-//       Montserrat.allCases.forEach {
-//           registerFont(bundle: .module, fontName: $0.rawValue, fontExtension: "ttf")
-//       }
-//    }
-    
+    public static func registerFonts() {
+        let frameworkBundle = Bundle(for: example.self)
+
+       Montserrat.allCases.forEach {
+           registerFont(bundle: frameworkBundle, fontName: $0.rawValue, fontExtension: "ttf")
+       }
+    }
+
     fileprivate static func registerFont(bundle: Bundle, fontName: String, fontExtension: String) {
 
         guard let fontURL = bundle.url(forResource: fontName, withExtension: fontExtension),
