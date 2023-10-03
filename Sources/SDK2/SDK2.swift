@@ -65,7 +65,6 @@ struct VehicleInformation: View {
                 }
                 Spacer()
                 Image("FIAT_App_lat_izdo", bundle: SDK2.SDK2Bundle)
-//                Image("FIAT_App_lat_izdo")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 150, height: 150.0)
